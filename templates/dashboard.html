@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instructor Dashboard</title>
+</head>
+<body>
+
+<h2>List of Students</h2>
+<table border="1">
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Delete?</td>
+    </tr>
+    {% for row in students %}
+    <tr>
+        <td>{{ row['first_name'] }}</td>
+        <td>{{ row['last_name'] }}</td>
+        <td><a href="/deletestudent/{{ row['id'] }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+<a href="/addstudent">Add a Student</a>
+<br><br>
+
+<h2>List of Quizzes</h2>
+<table border="1">
+    <tr>
+        <td>Subject</td>
+        <td>Questions</td>
+        <td>Date</td>
+        <td>View Results</td>
+        <td>Delete?</td>
+    </tr>
+    {% for row in quizzes %}
+    <tr>
+        <td>{{ row['subject'] }}</td>
+        <td>{{ row['num_questions'] }}</td>
+        <td>{{ row['quiz_date'] }}</td>
+        <td><a href="/viewresults/{{ row['quizid'] }}">Click to view results</a></td>
+        <td><a href="/deletequiz/{{ row['quizid'] }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+<a href="/addquiz">Add a Quiz</a>
+<br><br>
+
+<h2>Student Quiz Grades</h2>
+<table border="1">
+    <tr>
+        <td>Student ID</td>
+        <td>Quiz ID</td>
+        <td>Score</td>
+        <td>Delete?</td>
+    </tr>
+    {% for row in results %}
+    <tr>
+        <td>{{ row['studentid'] }}</td>
+        <td>{{ row['quizid'] }}</td>
+        <td>{{ row['score'] }}</td>
+        <td><a href="/deleteresult/{{ row['id'] }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+<a href="/addresults">Add Grades</a>
+<br><br>
+
+</body>
+</html>
+
